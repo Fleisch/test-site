@@ -18,276 +18,276 @@ Expected path/category (can I just use folders or is it more involved):
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="syntax"></a><a href="#syntax" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax</h3>
 <!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
-<pre><code class="hljs css java">//include guard
-#ifndef _INSERT_CLASS_NAME_H
-#define _INSERT_CLASS_NAME_H
+<pre><code class="hljs css cpp"><span class="hljs-comment">//include guard</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _INSERT_CLASS_NAME_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _INSERT_CLASS_NAME_H</span>
 
-//required
-#include &lt;sst/core/component.h&gt;
-#include &lt;sst/core/elementinfo.h&gt;
+<span class="hljs-comment">//required</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
 
-//if you have a port on your component
-#include &lt;sst/core/link.h&gt;
+<span class="hljs-comment">//if you have a port on your component</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/link.h&gt;</span></span>
 
-//if you have a subcomponent
-#include &lt;sst/core/subcomponent.h&gt;
+<span class="hljs-comment">//if you have a subcomponent</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/subcomponent.h&gt;</span></span>
 
-//generally a good idea to have a namespace
-namespace exA_hello {
+<span class="hljs-comment">//generally a good idea to have a namespace</span>
+<span class="hljs-keyword">namespace</span> exA_hello {
 
-class INSERT_CLASS_NAME : public SST::Component {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">INSERT_CLASS_NAME</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
 
-public:
+<span class="hljs-keyword">public</span>:
 
-    //required, constructor/destructor
+    <span class="hljs-comment">//required, constructor/destructor</span>
     INSERT_CLASS_NAME( SST::ComponentId_t id, SST::Params&amp; params );
     ~INSERT_CLASS_NAME();
 
-    //required, functions to run at the start and end of the simulation.
-    //  can just be functions that do nothing
-    void setup();
-    void finish();
+    <span class="hljs-comment">//required, functions to run at the start and end of the simulation.</span>
+    <span class="hljs-comment">//  can just be functions that do nothing</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
 
-    //not required, but almost all components will register a clock and do something on a clock tick
-    bool clockTick( SST::Cycle_t currentCycle );
+    <span class="hljs-comment">//not required, but almost all components will register a clock and do something on a clock tick</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">clockTick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
 
-//Register pieces of the component with SST.
+<span class="hljs-comment">//Register pieces of the component with SST.</span>
 
-    //required
-    // Register the component
+    <span class="hljs-comment">//required</span>
+    <span class="hljs-comment">// Register the component</span>
     SST_ELI_REGISTER_COMPONENT(
-        INSERT_CLASS_NAME, // class
-        "exA_helloSST", // element library
-        "INSERT_CLASS_NAME", // component
-        SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), //version
-        "Simple model that prints Hello World!", //description
-        COMPONENT_CATEGORY_UNCATEGORIZED //category
+        INSERT_CLASS_NAME, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exA_helloSST"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"INSERT_CLASS_NAME"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ), <span class="hljs-comment">//version</span>
+        <span class="hljs-string">"Simple model that prints Hello World!"</span>, <span class="hljs-comment">//description</span>
+        COMPONENT_CATEGORY_UNCATEGORIZED <span class="hljs-comment">//category</span>
     )
-    //if you wnat to accept params from the Project Driver
-    //           This text will be used to generate the sst-info documentation.
+    <span class="hljs-comment">//if you wnat to accept params from the Project Driver</span>
+    <span class="hljs-comment">//           This text will be used to generate the sst-info documentation.</span>
     SST_ELI_DOCUMENT_PARAMS(
-        // Parameter name, description, default value
-        { "repeats", "Number of repetitions to make", "10" },
-        { "param", "description", "default" }
+        <span class="hljs-comment">// Parameter name, description, default value</span>
+        { <span class="hljs-string">"repeats"</span>, <span class="hljs-string">"Number of repetitions to make"</span>, <span class="hljs-string">"10"</span> },
+        { <span class="hljs-string">"param"</span>, <span class="hljs-string">"description"</span>, <span class="hljs-string">"default"</span> }
     )
 
-    //if you want to collect statistics
+    <span class="hljs-comment">//if you want to collect statistics</span>
     SST_ELI_DOCUMENT_STATISTICS(
-        // Statistic name, description, unit, enable level
-        { "smallCarsWashed", "Number of small cars washed", "cars", 1 },  
-        { "largeCarsWashed", "Number of large cars washed", "cars", 1 },
-        { "noCarEvents", "Number of no car generated events", "cars", 2 },
-        { "smallCarsWaiting", "Number of small cars still waiting in line", "cars", 1 },
-        { "largeCarsWaiting", "Number of large cars still waiting in line", "cars", 1 }
+        <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
+        { <span class="hljs-string">"smallCarsWashed"</span>, <span class="hljs-string">"Number of small cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },  
+        { <span class="hljs-string">"largeCarsWashed"</span>, <span class="hljs-string">"Number of large cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"noCarEvents"</span>, <span class="hljs-string">"Number of no car generated events"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">2</span> },
+        { <span class="hljs-string">"smallCarsWaiting"</span>, <span class="hljs-string">"Number of small cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"largeCarsWaiting"</span>, <span class="hljs-string">"Number of large cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> }
     )
     
-    //if you have subcomponents
+    <span class="hljs-comment">//if you have subcomponents</span>
     SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
-        // Slot name, description, slot type
-        { "bay", "Car Wash Bay", "SST::exC_carWash::carWashBay" }
+        <span class="hljs-comment">// Slot name, description, slot type</span>
+        { <span class="hljs-string">"bay"</span>, <span class="hljs-string">"Car Wash Bay"</span>, <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> }
     )
 
-    //if you have ports
+    <span class="hljs-comment">//if you have ports</span>
     SST_ELI_DOCUMENT_PORTS(
-        // Port name, description, event type
-        { "port", "Port on which to receive cars", {"sst.Interfaces.StringEvent"} }
+        <span class="hljs-comment">// Port name, description, event type</span>
+        { <span class="hljs-string">"port"</span>, <span class="hljs-string">"Port on which to receive cars"</span>, {<span class="hljs-string">"sst.Interfaces.StringEvent"</span>} }
     )
 
-    private:
+    <span class="hljs-keyword">private</span>:
     
-    //private variables, functions, etc.
+    <span class="hljs-comment">//private variables, functions, etc.</span>
     
-    //if you have subcomponents
-    std::vector&lt;SUBCOMPONENT_CLASS_NAME*&gt; subComps;
+    <span class="hljs-comment">//if you have subcomponents</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;SUBCOMPONENT_CLASS_NAME*&gt; subComps;
 
-    //if you have a port
+    <span class="hljs-comment">//if you have a port</span>
     SST::Link *port;
     
-    // if you have statistics
-    Statistic&lt;int&gt;* smallCarsWashed;
-    Statistic&lt;int&gt;* largeCarsWashed;
-    Statistic&lt;int&gt;* noCarEvents;
-    Statistic&lt;int&gt;* smallCarsWaiting;
-    Statistic&lt;int&gt;* largeCarsWaiting;
+    <span class="hljs-comment">// if you have statistics</span>
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* noCarEvents;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWaiting;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWaiting;
 };
-} // namespace exC_carWash
-#endif
+} <span class="hljs-comment">// namespace exC_carWash</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 \
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
 <h4><a class="anchor" aria-hidden="true" id="example-1-simple"></a><a href="#example-1-simple" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 1 - Simple</h4>
-<pre><code class="hljs css java">#ifndef _hello_H
-#define _hello_H
+<pre><code class="hljs css cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _hello_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _hello_H</span>
 
-#include &lt;sst/core/component.h&gt;
-#include &lt;sst/core/elementinfo.h&gt;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
 
-namespace exA_hello {
+<span class="hljs-keyword">namespace</span> exA_hello {
 
-class hello : public SST::Component {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hello</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
 
-public:
+<span class="hljs-keyword">public</span>:
     hello( SST::ComponentId_t id, SST::Params&amp; params );
     ~hello();
 
-    void setup();
-    void finish();
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
 
-    bool clockTick( SST::Cycle_t currentCycle );
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">clockTick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
 
-    // Register the component
+    <span class="hljs-comment">// Register the component</span>
     SST_ELI_REGISTER_COMPONENT(
-        hello, // class
-        "exA_helloSST", // element library
-        "hello", // component
-        SST_ELI_ELEMENT_VERSION( 1, 0, 0 ),
-        "Simple model that prints Hello World!",
+        hello, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exA_helloSST"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"hello"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"Simple model that prints Hello World!"</span>,
         COMPONENT_CATEGORY_UNCATEGORIZED
     )
 
-    // Parameter name, description, default value
+    <span class="hljs-comment">// Parameter name, description, default value</span>
     SST_ELI_DOCUMENT_PARAMS(
-        { "repeats", "Number of repetitions to make", "10" }
+        { <span class="hljs-string">"repeats"</span>, <span class="hljs-string">"Number of repetitions to make"</span>, <span class="hljs-string">"10"</span> }
     )
 
-private:
+<span class="hljs-keyword">private</span>:
     SST::Output output;
-    SST::Cycle_t maxRepeats; //number of repititions to make
-    SST::Cycle_t repeats; //number of repitions printed already
+    SST::Cycle_t maxRepeats; <span class="hljs-comment">//number of repititions to make</span>
+    SST::Cycle_t repeats; <span class="hljs-comment">//number of repitions printed already</span>
 
 };
-} // namespace exA_hello
-#endif
+} <span class="hljs-comment">// namespace exA_hello</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 </code></pre>
 <h4><a class="anchor" aria-hidden="true" id="example-2-more-complex"></a><a href="#example-2-more-complex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 2 - More Complex</h4>
-<pre><code class="hljs css java">#ifndef _carWash_H
-#define _carWash_H
+<pre><code class="hljs css cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _carWash_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _carWash_H</span>
 
-#include &lt;sst/core/component.h&gt;
-#include &lt;sst/core/link.h&gt;
-#include &lt;sst/core/elementinfo.h&gt;
-#include &lt;sst/core/subcomponent.h&gt;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/link.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/subcomponent.h&gt;</span></span>
 
-#define WASH_BAY_EMPTY 0
-#define WASH_BAY_FULL 1
-#define NO_CAR 0
-#define SMALL_CAR 1
-#define LARGE_CAR 2
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WASH_BAY_EMPTY 0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> WASH_BAY_FULL 1</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NO_CAR 0</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SMALL_CAR 1</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LARGE_CAR 2</span>
 
-namespace exC_carWash {
-// carWash subcomponent prototype
-class carWashBay : public SST::SubComponent {
-public:
-    // constructor and destructor cannot be virtual, all other functions must be
+<span class="hljs-keyword">namespace</span> exC_carWash {
+<span class="hljs-comment">// carWash subcomponent prototype</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">carWashBay</span> :</span> <span class="hljs-keyword">public</span> SST::SubComponent {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// constructor and destructor cannot be virtual, all other functions must be</span>
     carWashBay(SST::Component *owningComponent) : SubComponent(owningComponent) {};
     ~carWashBay() {};
-    virtual bool newCar(int CarType) = 0;
-    virtual int baySize() = 0;
-    virtual int isOccupied() = 0;
-    virtual void tick() {};
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">newCar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> CarType)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">baySize</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">isOccupied</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tick</span><span class="hljs-params">()</span> </span>{};
 };
 
 
-class carWash : public SST::Component {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">carWash</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
 
-public:
+<span class="hljs-keyword">public</span>:
     carWash( SST::ComponentId_t id, SST::Params&amp; params );
     ~carWash();
 
-    void setup();
-    void finish();
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
 
-    bool tick( SST::Cycle_t currentCycle );
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">tick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
 
-    //handle events on the port
-    void handleEvent(SST::Event *ev);
+    <span class="hljs-comment">//handle events on the port</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">handleEvent</span><span class="hljs-params">(SST::Event *ev)</span></span>;
     
-    // Link list entry; used to store the cars as they are queued for service
-    typedef struct CAR_RECORD_T {
-        int CarSize; // 0 == Small Car; 1 == Large Car
-        CAR_RECORD_T *ptrNext; // The next Car in the linked list   
+    <span class="hljs-comment">// Link list entry; used to store the cars as they are queued for service</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CAR_RECORD_T</span> {</span>
+        <span class="hljs-keyword">int</span> CarSize; <span class="hljs-comment">// 0 == Small Car; 1 == Large Car</span>
+        CAR_RECORD_T *ptrNext; <span class="hljs-comment">// The next Car in the linked list   </span>
     } CAR_RECORD;
 
-    // Record to track how many cars have been washed
-    typedef struct {
-        int currentTime; // Time (ticks) since the epoch of the day
-        int smallCarsWashed;
-        int largeCarsWashed;
+    <span class="hljs-comment">// Record to track how many cars have been washed</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+        <span class="hljs-keyword">int</span> currentTime; <span class="hljs-comment">// Time (ticks) since the epoch of the day</span>
+        <span class="hljs-keyword">int</span> smallCarsWashed;
+        <span class="hljs-keyword">int</span> largeCarsWashed;
     } CARS_WASHED;
     
-    // Record to track how many cars arrived in the past hour
-    typedef struct {
-        int smallCarsArrived;
-        int largeCarsArrived;
-        int noCarsArrived;
+    <span class="hljs-comment">// Record to track how many cars arrived in the past hour</span>
+    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+        <span class="hljs-keyword">int</span> smallCarsArrived;
+        <span class="hljs-keyword">int</span> largeCarsArrived;
+        <span class="hljs-keyword">int</span> noCarsArrived;
     } CAR_WASH_JOURNAL;
     
-    // Register the component
+    <span class="hljs-comment">// Register the component</span>
     SST_ELI_REGISTER_COMPONENT(
-        carWash, // class
-        "exC_carWash", // element library
-        "carWash", // component
-        SST_ELI_ELEMENT_VERSION( 1, 0, 0 ),
-        "carWash main simulator. Accepts car inputs from a carGenerator component, then queues and washes cars using bay subcomponents",
+        carWash, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"carWash"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"carWash main simulator. Accepts car inputs from a carGenerator component, then queues and washes cars using bay subcomponents"</span>,
         COMPONENT_CATEGORY_UNCATEGORIZED
     )
 
-    // Parameter name, description, default value
+    <span class="hljs-comment">// Parameter name, description, default value</span>
     SST_ELI_DOCUMENT_PARAMS(
-        { "simulationTime", "How long to run simulation (hours)", "24" }
+        { <span class="hljs-string">"simulationTime"</span>, <span class="hljs-string">"How long to run simulation (hours)"</span>, <span class="hljs-string">"24"</span> }
     )
     
-    // Statistic name, description, unit, enable level
+    <span class="hljs-comment">// Statistic name, description, unit, enable level</span>
     SST_ELI_DOCUMENT_STATISTICS(
-        { "smallCarsWashed", "Number of small cars washed", "cars", 1 },  
-        { "largeCarsWashed", "Number of large cars washed", "cars", 1 },
-        { "noCarEvents", "Number of no car generated events", "cars", 2 },
-        { "smallCarsWaiting", "Number of small cars still waiting in line", "cars", 1 },
-        { "largeCarsWaiting", "Number of large cars still waiting in line", "cars", 1 }
+        { <span class="hljs-string">"smallCarsWashed"</span>, <span class="hljs-string">"Number of small cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },  
+        { <span class="hljs-string">"largeCarsWashed"</span>, <span class="hljs-string">"Number of large cars washed"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"noCarEvents"</span>, <span class="hljs-string">"Number of no car generated events"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">2</span> },
+        { <span class="hljs-string">"smallCarsWaiting"</span>, <span class="hljs-string">"Number of small cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> },
+        { <span class="hljs-string">"largeCarsWaiting"</span>, <span class="hljs-string">"Number of large cars still waiting in line"</span>, <span class="hljs-string">"cars"</span>, <span class="hljs-number">1</span> }
     )
     
-    // Slot name, description, slot type
+    <span class="hljs-comment">// Slot name, description, slot type</span>
     SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
-        { "bay", "Car Wash Bay", "SST::exC_carWash::carWashBay" }
+        { <span class="hljs-string">"bay"</span>, <span class="hljs-string">"Car Wash Bay"</span>, <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> }
     )
 
-    // Port name, description, event type
+    <span class="hljs-comment">// Port name, description, event type</span>
     SST_ELI_DOCUMENT_PORTS(
-        { "port", "Port on which to receive cars", {"sst.Interfaces.StringEvent"} }
+        { <span class="hljs-string">"port"</span>, <span class="hljs-string">"Port on which to receive cars"</span>, {<span class="hljs-string">"sst.Interfaces.StringEvent"</span>} }
     )
 
-private:
+<span class="hljs-keyword">private</span>:
     SST::Output output;
     CAR_RECORD *ptrCarRecordList;
     CARS_WASHED CarWash;
     CAR_WASH_JOURNAL HourlyReport;
 
-    void QueueACar(int carSize);
-    void CarWashClockTick();
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QueueACar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> carSize)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CarWashClockTick</span><span class="hljs-params">()</span></span>;
     
-    int CarWashTick;
-    std::string clock;
-    float ticksPerHour;
-    int64_t runTime;
-    int CarType;
-    std::vector&lt;carWashBay*&gt; subComps;
+    <span class="hljs-keyword">int</span> CarWashTick;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> clock;
+    <span class="hljs-keyword">float</span> ticksPerHour;
+    <span class="hljs-keyword">int64_t</span> runTime;
+    <span class="hljs-keyword">int</span> CarType;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;carWashBay*&gt; subComps;
     SST::Link *port;
     
-    // Statistics
-    Statistic&lt;int&gt;* smallCarsWashed;
-    Statistic&lt;int&gt;* largeCarsWashed;
-    Statistic&lt;int&gt;* noCarEvents;
-    Statistic&lt;int&gt;* smallCarsWaiting;
-    Statistic&lt;int&gt;* largeCarsWaiting;
+    <span class="hljs-comment">// Statistics</span>
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWashed;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* noCarEvents;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* smallCarsWaiting;
+    Statistic&lt;<span class="hljs-keyword">int</span>&gt;* largeCarsWaiting;
 };
-} // namespace exC_carWash
-#endif
+} <span class="hljs-comment">// namespace exC_carWash</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="subcomponent-class"></a><a href="#subcomponent-class" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Subcomponent Class</h2>
 <p>The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT.</p>
 <h3><a class="anchor" aria-hidden="true" id="syntax-example"></a><a href="#syntax-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax / Example</h3>
-<pre><code class="hljs css java"><span class="hljs-comment">// Register the subcomponent</span>
+<pre><code class="hljs css cpp"><span class="hljs-comment">// Register the subcomponent</span>
     SST_ELI_REGISTER_SUBCOMPONENT(
         bay, <span class="hljs-comment">// class</span>
         <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
