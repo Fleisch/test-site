@@ -10,7 +10,7 @@
 <url> <loc>https://fleisch.github.io/blog/2017/09/25/testing-rss.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://fleisch.github.io/blog/2017/04/10/blog-post-two.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>https://fleisch.github.io/blog/2016/03/11/blog-post.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
-<url> <loc>https://fleisch.github.io/docs/_template_function.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://fleisch.github.io/docs/_template_function.html" /> </url>
+<url> <loc>https://fleisch.github.io/docs/template_function.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://fleisch.github.io/docs/template_function.html" /> </url>
 <url> <loc>https://fleisch.github.io/docs/basics_header_files.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://fleisch.github.io/docs/basics_header_files.html" /> </url>
 <url> <loc>https://fleisch.github.io/docs/doc1.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://fleisch.github.io/docs/doc1.html" /> </url>
 <url> <loc>https://fleisch.github.io/docs/doc2.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://fleisch.github.io/docs/doc2.html" /> </url>
