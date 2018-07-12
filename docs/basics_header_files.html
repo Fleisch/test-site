@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>basics_header_files · The Structural Simulation Toolkit</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="basics_header_files · The Structural Simulation Toolkit"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fleisch.github.io/test-site/index.html"/><meta property="og:description" content="&lt;!---"/><meta property="og:image" content="https://fleisch.github.io/test-site/img/sst-logo-small.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fleisch.github.io/test-site/img/sst-logo-small.png"/><link rel="shortcut icon" href="/test-site/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://fleisch.github.io/blog/atom.xml" title="The Structural Simulation Toolkit Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://fleisch.github.io/blog/feed.xml" title="The Structural Simulation Toolkit Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/test-site/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/test-site/"><img class="logo" src="/test-site/img/sst-logo-small.png" alt="The Structural Simulation Toolkit"/><h2 class="headerTitleWithLogo">The Structural Simulation Toolkit</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/test-site/docs/doc1.html" target="_self">SDK Docs</a></li><li class=""><a href="/test-site/docs/doc4.html" target="_self">API</a></li><li class=""><a href="/test-site/en/help.html" target="_self">Help</a></li><li class=""><a href="/test-site/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/Fleisch/test-site/edit/master/docs/basics_header_files.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>basics_header_files</h1></header><article><div><span><!---
+Expected path/category (can I just use folders or is it more involved): 
+  Getting Started > [this page]
+--->
+<h1><a class="anchor" aria-hidden="true" id="basics-header-h-files"></a><a href="#basics-header-h-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basics: Header (.h) Files</h1>
+<h2><a class="anchor" aria-hidden="true" id="component-class"></a><a href="#component-class" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Component Class</h2>
+<p>For the most part header files are just like any other C++ header file. There are a only few required pieces. Generally the header files:</p>
+<ul>
+<li>Register the component with SST</li>
+<li>Register params, ports, subcomponents and statistics with SST.</li>
+<li>Varibale and function declarations</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="syntax"></a><a href="#syntax" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax</h3>
+<!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
+```java
+//include guard
+#ifndef _INSERT_CLASS_NAME_H
+#define _INSERT_CLASS_NAME_H
+<p>//required
+#include &lt;sst/core/component.h&gt;
+#include &lt;sst/core/elementinfo.h&gt;</p>
+<p>//if you have a port on your component
+#include &lt;sst/core/link.h&gt;</p>
+<p>//if you have a subcomponent
+#include &lt;sst/core/subcomponent.h&gt;</p>
+<p>//generally a good idea to have a namespace
+namespace exA_hello {</p>
+<p>class INSERT_CLASS_NAME : public SST::Component {</p>
+<p>public:</p>
+<pre><code class="hljs">//required, constructor/destructor
+INSERT_CLASS_NAME( SST::ComponentId_t id, SST::Params&amp; params );
+~INSERT_CLASS_NAME();
+
+//required, functions to run at the start and end of the simulation.
+//  can just be functions that do nothing
+void setup();
+void finish();
+
+//not required, but almost all components will register a clock and do something on a clock tick
+bool clockTick( SST::Cycle_t currentCycle );
+</code></pre>
+<p>//Register pieces of the component with SST.</p>
+<pre><code class="hljs">//required
+// Register the component
+SST_ELI_REGISTER_COMPONENT(
+    INSERT_CLASS_NAME, // class
+    &quot;exA_helloSST&quot;, // element library
+    &quot;INSERT_CLASS_NAME&quot;, // component
+    SST_ELI_ELEMENT_VERSION( 1, 0, 0 ), //version
+    &quot;Simple model that prints Hello World!&quot;, //description
+    COMPONENT_CATEGORY_UNCATEGORIZED //category
+)
+//if you wnat to accept params from the Project Driver
+//           This text will be used to generate the sst-info documentation.
+SST_ELI_DOCUMENT_PARAMS(
+    // Parameter name, description, default value
+    { &quot;repeats&quot;, &quot;Number of repetitions to make&quot;, &quot;10&quot; },
+    { &quot;param&quot;, &quot;description&quot;, &quot;default&quot; }
+)
+
+//if you want to collect statistics
+SST_ELI_DOCUMENT_STATISTICS(
+    // Statistic name, description, unit, enable level
+    { &quot;smallCarsWashed&quot;, &quot;Number of small cars washed&quot;, &quot;cars&quot;, 1 },  
+    { &quot;largeCarsWashed&quot;, &quot;Number of large cars washed&quot;, &quot;cars&quot;, 1 },
+    { &quot;noCarEvents&quot;, &quot;Number of no car generated events&quot;, &quot;cars&quot;, 2 },
+    { &quot;smallCarsWaiting&quot;, &quot;Number of small cars still waiting in line&quot;, &quot;cars&quot;, 1 },
+    { &quot;largeCarsWaiting&quot;, &quot;Number of large cars still waiting in line&quot;, &quot;cars&quot;, 1 }
+)
+
+//if you have subcomponents
+SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
+    // Slot name, description, slot type
+    { &quot;bay&quot;, &quot;Car Wash Bay&quot;, &quot;SST::exC_carWash::carWashBay&quot; }
+)
+
+//if you have ports
+SST_ELI_DOCUMENT_PORTS(
+    // Port name, description, event type
+    { &quot;port&quot;, &quot;Port on which to receive cars&quot;, {&quot;sst.Interfaces.StringEvent&quot;} }
+)
+
+private:
+
+//private variables, functions, etc.
+
+//if you have subcomponents
+std::vector&lt;SUBCOMPONENT_CLASS_NAME*&gt; subComps;
+
+//if you have a port
+SST::Link *port;
+
+// if you have statistics
+Statistic&lt;int&gt;* smallCarsWashed;
+Statistic&lt;int&gt;* largeCarsWashed;
+Statistic&lt;int&gt;* noCarEvents;
+Statistic&lt;int&gt;* smallCarsWaiting;
+Statistic&lt;int&gt;* largeCarsWaiting;
+</code></pre>
+<p>};
+} // namespace exC_carWash
+#endif
+\</p>
+<pre><code class="hljs">
+
+<span class="cpp">### Examples
+#### Example <span class="hljs-number">1</span> - Simple
+
+```java
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _hello_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _hello_H</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/elementinfo.h&gt;</span></span>
+
+<span class="hljs-keyword">namespace</span> exA_hello {
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hello</span> :</span> <span class="hljs-keyword">public</span> SST::Component {
+
+<span class="hljs-keyword">public</span>:
+    hello( SST::ComponentId_t id, SST::Params&amp; params );
+    ~hello();
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finish</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">clockTick</span><span class="hljs-params">( SST::Cycle_t currentCycle )</span></span>;
+
+    <span class="hljs-comment">// Register the component</span>
+    SST_ELI_REGISTER_COMPONENT(
+        hello, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exA_helloSST"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"hello"</span>, <span class="hljs-comment">// component</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ),
+        <span class="hljs-string">"Simple model that prints Hello World!"</span>,
+        COMPONENT_CATEGORY_UNCATEGORIZED
+    )
+
+    <span class="hljs-comment">// Parameter name, description, default value</span>
+    SST_ELI_DOCUMENT_PARAMS(
+        { <span class="hljs-string">"repeats"</span>, <span class="hljs-string">"Number of repetitions to make"</span>, <span class="hljs-string">"10"</span> }
+    )
+
+<span class="hljs-keyword">private</span>:
+    SST::Output output;
+    SST::Cycle_t maxRepeats; <span class="hljs-comment">//number of repititions to make</span>
+    SST::Cycle_t repeats; <span class="hljs-comment">//number of repitions printed already</span>
+
+};
+} <span class="hljs-comment">// namespace exA_hello</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="example-2-more-complex"></a><a href="#example-2-more-complex" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 2 - More Complex</h4>
+<pre><code class="hljs css java">#ifndef _carWash_H
+#define _carWash_H
+
+#include &lt;sst/core/component.h&gt;
+#include &lt;sst/core/link.h&gt;
+#include &lt;sst/core/elementinfo.h&gt;
+#include &lt;sst/core/subcomponent.h&gt;
+
+#define WASH_BAY_EMPTY 0
+#define WASH_BAY_FULL 1
+#define NO_CAR 0
+#define SMALL_CAR 1
+#define LARGE_CAR 2
+
+namespace exC_carWash {
+// carWash subcomponent prototype
+class carWashBay : public SST::SubComponent {
+public:
+    // constructor and destructor cannot be virtual, all other functions must be
+    carWashBay(SST::Component *owningComponent) : SubComponent(owningComponent) {};
+    ~carWashBay() {};
+    virtual bool newCar(int CarType) = 0;
+    virtual int baySize() = 0;
+    virtual int isOccupied() = 0;
+    virtual void tick() {};
+};
+
+
+class carWash : public SST::Component {
+
+public:
+    carWash( SST::ComponentId_t id, SST::Params&amp; params );
+    ~carWash();
+
+    void setup();
+    void finish();
+
+    bool tick( SST::Cycle_t currentCycle );
+
+    //handle events on the port
+    void handleEvent(SST::Event *ev);
+    
+    // Link list entry; used to store the cars as they are queued for service
+    typedef struct CAR_RECORD_T {
+        int CarSize; // 0 == Small Car; 1 == Large Car
+        CAR_RECORD_T *ptrNext; // The next Car in the linked list   
+    } CAR_RECORD;
+
+    // Record to track how many cars have been washed
+    typedef struct {
+        int currentTime; // Time (ticks) since the epoch of the day
+        int smallCarsWashed;
+        int largeCarsWashed;
+    } CARS_WASHED;
+    
+    // Record to track how many cars arrived in the past hour
+    typedef struct {
+        int smallCarsArrived;
+        int largeCarsArrived;
+        int noCarsArrived;
+    } CAR_WASH_JOURNAL;
+    
+    // Register the component
+    SST_ELI_REGISTER_COMPONENT(
+        carWash, // class
+        "exC_carWash", // element library
+        "carWash", // component
+        SST_ELI_ELEMENT_VERSION( 1, 0, 0 ),
+        "carWash main simulator. Accepts car inputs from a carGenerator component, then queues and washes cars using bay subcomponents",
+        COMPONENT_CATEGORY_UNCATEGORIZED
+    )
+
+    // Parameter name, description, default value
+    SST_ELI_DOCUMENT_PARAMS(
+        { "simulationTime", "How long to run simulation (hours)", "24" }
+    )
+    
+    // Statistic name, description, unit, enable level
+    SST_ELI_DOCUMENT_STATISTICS(
+        { "smallCarsWashed", "Number of small cars washed", "cars", 1 },  
+        { "largeCarsWashed", "Number of large cars washed", "cars", 1 },
+        { "noCarEvents", "Number of no car generated events", "cars", 2 },
+        { "smallCarsWaiting", "Number of small cars still waiting in line", "cars", 1 },
+        { "largeCarsWaiting", "Number of large cars still waiting in line", "cars", 1 }
+    )
+    
+    // Slot name, description, slot type
+    SST_ELI_DOCUMENT_SUBCOMPONENT_SLOTS(
+        { "bay", "Car Wash Bay", "SST::exC_carWash::carWashBay" }
+    )
+
+    // Port name, description, event type
+    SST_ELI_DOCUMENT_PORTS(
+        { "port", "Port on which to receive cars", {"sst.Interfaces.StringEvent"} }
+    )
+
+private:
+    SST::Output output;
+    CAR_RECORD *ptrCarRecordList;
+    CARS_WASHED CarWash;
+    CAR_WASH_JOURNAL HourlyReport;
+
+    void QueueACar(int carSize);
+    void CarWashClockTick();
+    
+    int CarWashTick;
+    std::string clock;
+    float ticksPerHour;
+    int64_t runTime;
+    int CarType;
+    std::vector&lt;carWashBay*&gt; subComps;
+    SST::Link *port;
+    
+    // Statistics
+    Statistic&lt;int&gt;* smallCarsWashed;
+    Statistic&lt;int&gt;* largeCarsWashed;
+    Statistic&lt;int&gt;* noCarEvents;
+    Statistic&lt;int&gt;* smallCarsWaiting;
+    Statistic&lt;int&gt;* largeCarsWaiting;
+};
+} // namespace exC_carWash
+#endif
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="subcomponent-class"></a><a href="#subcomponent-class" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Subcomponent Class</h2>
+<p>The syntax is the same as a Component class, except you use SST_ELI_REGISTER_SUBCOMPONENT instead of SST_ELI_REGISTER_COMPONENT.</p>
+<h3><a class="anchor" aria-hidden="true" id="syntax-example"></a><a href="#syntax-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax / Example</h3>
+<pre><code class="hljs css java"><span class="hljs-comment">// Register the subcomponent</span>
+    SST_ELI_REGISTER_SUBCOMPONENT(
+        bay, <span class="hljs-comment">// class</span>
+        <span class="hljs-string">"exC_carWash"</span>, <span class="hljs-comment">// element library</span>
+        <span class="hljs-string">"bay"</span>, <span class="hljs-comment">// subcomponent</span>
+        SST_ELI_ELEMENT_VERSION( <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ), <span class="hljs-comment">//version</span>
+        <span class="hljs-string">"Bay subcomponent for the carwash"</span>, <span class="hljs-comment">//description</span>
+        <span class="hljs-string">"SST::exC_carWash::carWashBay"</span> <span class="hljs-comment">// type of objects that subcomponent slots will have</span>
+    )
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#component-class">Component Class</a><ul class="toc-headings"><li><a href="#syntax">Syntax</a></li><li><a href="#examples">Examples</a></li></ul></li><li><a href="#subcomponent-class">Subcomponent Class</a><ul class="toc-headings"><li><a href="#syntax-example">Syntax / Example</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/test-site/" class="nav-home"><img src="/test-site/img/sst-logo-small.png" alt="The Structural Simulation Toolkit" width="66" height="58"/></a><div><h5>Docs</h5><a href="/test-site/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/test-site/docs/en/doc2.html">Guides (or other categories)</a><a href="/test-site/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/test-site/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/test-site/blog">Blog</a><a href="https://github.com/sstsimulator">GitHub</a><a class="github-button" href="https://github.com/sstsimulator/sst-core" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/test-site/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Your Name or Your Company Name</section></footer></div></body></html>

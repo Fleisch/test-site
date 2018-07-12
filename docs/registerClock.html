@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>registerClock · The Structural Simulation Toolkit</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="registerClock · The Structural Simulation Toolkit"/><meta property="og:type" content="website"/><meta property="og:url" content="https://fleisch.github.io/test-site/index.html"/><meta property="og:description" content="&lt;!---"/><meta property="og:image" content="https://fleisch.github.io/test-site/img/sst-logo-small.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://fleisch.github.io/test-site/img/sst-logo-small.png"/><link rel="shortcut icon" href="/test-site/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://fleisch.github.io/blog/atom.xml" title="The Structural Simulation Toolkit Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://fleisch.github.io/blog/feed.xml" title="The Structural Simulation Toolkit Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/test-site/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/test-site/"><img class="logo" src="/test-site/img/sst-logo-small.png" alt="The Structural Simulation Toolkit"/><h2 class="headerTitleWithLogo">The Structural Simulation Toolkit</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/test-site/docs/doc1.html" target="_self">SDK Docs</a></li><li class=""><a href="/test-site/docs/doc4.html" target="_self">API</a></li><li class=""><a href="/test-site/en/help.html" target="_self">Help</a></li><li class=""><a href="/test-site/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/Fleisch/test-site/edit/master/docs/registerClock.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>registerClock</h1></header><article><div><span><!---
+Expected path/category (can I just use folders or is it more involved): 
+  SST Core > SST::Component > [this page]
+<p>Questions/TODO:
+Add the signature for Clock::HandlerBase (or add it as another page)
+---&gt;</p>
+<h1><a class="anchor" aria-hidden="true" id="sst-component-registerclock"></a><a href="#sst-component-registerclock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SST::Component registerClock</h1>
+<h3><a class="anchor" aria-hidden="true" id="requirements"></a><a href="#requirements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements</h3>
+<pre><code class="hljs css c++"> <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sst/core/component.h&gt;</span></span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="syntax"></a><a href="#syntax" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Syntax</h3>
+<!--- java used here since it looked liked the highlight was a bit better (in VS code), would need to test and see what looks best --->
+```java
+TimeConverter* registerClock (const UnitAlgebra &freq, Clock::HandlerBase *handler, bool regAll=true)
+<p>TimeConverter* registerClock (std::string freq, Clock::HandlerBase *handler, bool regAll=true)</p>
+<p>// reactivates an existing Clock and Handler, returns the next time clock handler will fire
+Cycle_t reregisterClock (TimeConverter *freq, Clock::HandlerBase *handler)</p>
+<pre><code class="hljs">
+### Parameters
+**freq** - How often the handler should be called. This can be either the time between calls (<span class="hljs-string">"50ms"</span>) or a frequency (<span class="hljs-string">"1GHz"</span>).
+
+**handler** - a function to be called
+
+**regAll** (optional) - Should this clock period be used <span class="hljs-keyword">as</span> the default time base for all <span class="hljs-keyword">of</span> the links connected to this component
+
+### Return Value
+**TimeConverter** - an object to convert between the component<span class="hljs-string">'s view of time and the simulation'</span>s view <span class="hljs-keyword">of</span> time.
+
+**Cycle_t** - then next time the handler willl fire
+
+### Remarks
+This sets up a function to becalled at regular intervals. Often these Clock::Handler funtions are <span class="hljs-keyword">where</span> a good portion <span class="hljs-keyword">of</span> the work is done.
+
+Tasks that are often performed:
+- Handle data queued by event handlers
+- Send envents
+- Simulate the next step 
+
+### Examples
+
+#### Example <span class="hljs-number">1</span>
+```java
+<span class="hljs-comment">// carwash/carGenerator.cc – lines 20, 24</span>
+std::string clockFreq = params.find&lt;std::string&gt;(<span class="hljs-string">"delay"</span>, <span class="hljs-string">"60s"</span>);
+
+registerClock(clockFreq, new SST::Clock::Handler&lt;carGenerator&gt;(this, &amp;carGenerator::clockTick));
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="example-2"></a><a href="#example-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 2</h4>
+<pre><code class="hljs css java"><span class="hljs-comment">// dmaEngine.cc - 34-35</span>
+TimeConverter *tc = registerClock(params.find&lt;std::string&gt;(<span class="hljs-string">"clockRate"</span>, <span class="hljs-string">"1 GHz"</span>),
+   <span class="hljs-keyword">new</span> Clock::Handler&lt;DMAEngine&gt;(<span class="hljs-keyword">this</span>, &amp;DMAEngine::clock));
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="example-3"></a><a href="#example-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example 3</h4>
+<pre><code class="hljs css java"><span class="hljs-comment">//Opal.cc - lines 95 - 96</span>
+std::string cpu_clock = params.find&lt;std::string&gt;(<span class="hljs-string">"clock"</span>, <span class="hljs-string">"1GHz"</span>);
+registerClock( cpu_clock, <span class="hljs-keyword">new</span> Clock::Handler&lt;Opal&gt;(<span class="hljs-keyword">this</span>, &amp;Opal::tick ) );
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="see-also"></a><a href="#see-also" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>See Also</h3>
+<ul>
+<li><a href="TBA">Clock::HandlerBase</a></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/test-site/" class="nav-home"><img src="/test-site/img/sst-logo-small.png" alt="The Structural Simulation Toolkit" width="66" height="58"/></a><div><h5>Docs</h5><a href="/test-site/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/test-site/docs/en/doc2.html">Guides (or other categories)</a><a href="/test-site/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/test-site/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/test-site/blog">Blog</a><a href="https://github.com/sstsimulator">GitHub</a><a class="github-button" href="https://github.com/sstsimulator/sst-core" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/test-site/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 Your Name or Your Company Name</section></footer></div></body></html>
